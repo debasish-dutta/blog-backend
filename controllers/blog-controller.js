@@ -10,7 +10,7 @@ export const getAllBlogs = async (req, res, next) => {
     if(!blogs) {
         return res.status(404).json({message: "No Blogs found!" })
     }
-    return res.status(200).json({blogs})
+    return res.status(200).json(blogs)
 }
 
 export const getBlogPost = async (req, res, next) => {
@@ -24,7 +24,7 @@ export const getBlogPost = async (req, res, next) => {
     if(!post) {
         return res.status(500).json({message: "Unable to find the blog post"})
     }
-    return res.status(200).json({post})
+    return res.status(200).json(post)
 }
 
 export const addBlog = async (req, res, next) => {
@@ -42,7 +42,7 @@ export const addBlog = async (req, res, next) => {
     } catch (err) {
         return console.log(err)
     }
-    return res.status(200).json({blog})
+    return res.status(200).json(blog)
 }
 
 export const updateBlog = async(req, res, next) => {
@@ -62,7 +62,7 @@ export const updateBlog = async(req, res, next) => {
         if(!blog) {
             return res.status(500).json({message: "Unable to update the blog"})
         }
-        return res.status(200).json({blog})
+        return res.status(200).json(blog)
 }
 
 export const deletePost = async(req, res, next) => {

@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import mongoose from 'mongoose';
 import dotenv from "dotenv";
 
@@ -9,6 +10,8 @@ import podcastRouter from './routes/podcast-routes';
 dotenv.config();
 
 const app = express();
+
+app.use(cors({ origin: '*'}));
 app.use(express.json());
 
 app.use("/admin", router);

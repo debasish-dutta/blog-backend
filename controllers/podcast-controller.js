@@ -10,7 +10,7 @@ export const getAllPodcasts = async (req, res, next) => {
     if(!podcasts) {
         return res.status(404).json({message: "No Blogs found!" })
     }
-    return res.status(200).json({podcasts})
+    return res.status(200).json(podcasts)
 }
 
 export const getPodcast = async (req, res, next) => {
@@ -24,7 +24,7 @@ export const getPodcast = async (req, res, next) => {
     if(!podcast) {
         return res.status(500).json({message: "Unable to find the blog post"})
     }
-    return res.status(200).json({podcast})
+    return res.status(200).json(podcast)
 }
 
 export const addPodcast = async (req, res, next) => {
@@ -42,7 +42,7 @@ export const addPodcast = async (req, res, next) => {
     } catch (err) {
         return console.log(err)
     }
-    return res.status(200).json({podcast})
+    return res.status(200).json(podcast)
 }
 
 export const updatePodcast = async(req, res, next) => {
@@ -62,7 +62,7 @@ export const updatePodcast = async(req, res, next) => {
         if(!podcast) {
             return res.status(500).json({message: "Unable to update the Podcast"})
         }
-        return res.status(200).json({podcast})
+        return res.status(200).json(podcast)
 }
 
 export const deletePodcast = async(req, res, next) => {
