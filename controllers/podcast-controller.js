@@ -15,9 +15,9 @@ export const getAllPodcasts = async (req, res, next) => {
 
 export const getPodcast = async (req, res, next) => {
     let podcast;
-    const podcastId = req.params.id;
+    const podcastId = req.params.slug;
     try {
-        podcast = await Podcast.findById(podcastId)
+        podcast = await Podcast.findOne({slug: podcastId})
     } catch (err) {
         return console.log(err)
     }
@@ -47,10 +47,10 @@ export const addPodcast = async (req, res, next) => {
 
 export const updatePodcast = async(req, res, next) => {
     const {title, subtitle, audio, tags} = req.body;
-    const podcastId = req.params.id;
+    const podcastId = req.params.slug;
     let podcast;
     try {
-        podcast = await Podcast.findByIdAndUpdate(podcastId, {
+        podcast = await Podcast.findOneAndUpdate({slug: podcastId}, {
                 title,
                 subtitle,
                 audio,
@@ -66,10 +66,10 @@ export const updatePodcast = async(req, res, next) => {
 }
 
 export const deletePodcast = async(req, res, next) => {
-    const podcastId = req.params.id;
+    const podcastId = req.params.slug;
     let podcast;
     try {
-        podcast = await Podcast.findByIdAndDelete(podcastId);
+        podcast = await Podcast.findOneAndDelete({slug: podcastId});
     } catch (err) {
         return console.log(err)
     }

@@ -3,10 +3,10 @@ import { getAllPodcasts, getPodcast, addPodcast, updatePodcast, deletePodcast } 
 const podcastRouter = express.Router();
 
 podcastRouter.get("/", getAllPodcasts);
-podcastRouter.get("/:id", getPodcast);
-podcastRouter.post("/addBlog", addPodcast);
-podcastRouter.put("/:id", updatePodcast);
-podcastRouter.delete("/:id", deletePodcast);
+podcastRouter.get("/:slug", getPodcast);
+podcastRouter.post("/addPodcast", addPodcast);
+podcastRouter.put("/:slug", updatePodcast);
+podcastRouter.delete("/:slug", deletePodcast);
 
 
 export default podcastRouter;

@@ -15,9 +15,9 @@ export const getAllBlogs = async (req, res, next) => {
 
 export const getBlogPost = async (req, res, next) => {
     let post;
-    const blogId = req.params.id;
+    const blogId = req.params.slug;
     try {
-        post = await Blog.findById(blogId)
+        post = await Blog.findOne({slug: blogId})
     } catch (err) {
         return console.log(err)
     }
@@ -47,14 +47,14 @@ export const addBlog = async (req, res, next) => {
 
 export const updateBlog = async(req, res, next) => {
     const {title, subtitle, content, tags} = req.body;
-    const blogId = req.params.id;
+    const blogId = req.params.slug;
     let blog;
     try {
-            blog = await Blog.findByIdAndUpdate(blogId, {
+            blog = await Blog.findOneAndUpdate({slug: blogId}, {
                 title,
                 subtitle,
                 content,
-                tags,
+                tags
             })
         } catch (err) {
             return console.log(err)
@@ -66,10 +66,10 @@ export const updateBlog = async(req, res, next) => {
 }
 
 export const deletePost = async(req, res, next) => {
-    const blogId = req.params.id;
+    const blogId = req.params.slug;
     let post;
     try {
-        post = await Blog.findByIdAndDelete(blogId);
+        post = await Blog.findOneAndDelete({slug: blogId});
     } catch (err) {
         return console.log(err)
     }

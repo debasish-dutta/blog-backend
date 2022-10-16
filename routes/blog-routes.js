@@ -3,10 +3,10 @@ import { getAllBlogs, getBlogPost, addBlog, updateBlog, deletePost } from "../co
 const blogRouter = express.Router();
 
 blogRouter.get("/", getAllBlogs);
-blogRouter.get("/:id", getBlogPost);
+blogRouter.get("/:slug", getBlogPost);
 blogRouter.post("/addBlog", addBlog);
-blogRouter.put("/:id", updateBlog);
-blogRouter.delete("/:id", deletePost);
+blogRouter.put("/:slug", updateBlog);
+blogRouter.delete("/:slug", deletePost);
 
 
 export default blogRouter;
